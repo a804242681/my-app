@@ -1,4 +1,3 @@
-
 process.env.TZ = 'UTC'
 
 const createScheduler = require('probot-scheduler')
