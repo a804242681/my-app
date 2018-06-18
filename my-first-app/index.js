@@ -1,17 +1,10 @@
-process.env.TZ = 'UTC'
+module.exports = app => {
+  // Your code here
+  app.log('Yay, the app was loaded!')
 
-const createScheduler = require('probot-scheduler')
-const commands = require('probot-commands')
-const reminders = require('./lib/reminders')
+  // For more information on building apps:
+  // https://probot.github.io/docs/
 
-module.exports = robot => {
-  createScheduler(robot, {interval: 15 * 60 * 1000})
-  commands(robot, 'remind', reminders.set)
-  robot.on('schedule.repository', reminders.check)
-    
-    robot.on('push', async context => {
-    // Code was pushed to the repo, what should we do with it?
-    robot.log(context)
-    robot.log("fish boy")
-  })
+  // To get your app running against GitHub, see:
+  // https://probot.github.io/docs/development/
 }
