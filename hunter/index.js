@@ -1,8 +1,8 @@
-
+var i=1;
 module.exports = robot => {
-  robot.on('push', async context => {
-    // Code was pushed to the repo, what should we do with it?
-    robot.log("hunter")
-    
+  robot.on(`*`, async context => {
+    context.log({event: context.event, action: context.payload.action})
+      robot.log(i)
+      i++
   })
 }
