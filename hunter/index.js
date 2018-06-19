@@ -25,7 +25,7 @@ module.exports = robot => {
         save+=repository.owner.login+" "
         if(repository.name!=null)
             save+=repository.name+" "
-            IF(issue.title!=null)
+            if(issue.title!=null)
                 save+=issue.title+" "
                 if(issue.labels!=null)
                     save+=issue.labels+" "
