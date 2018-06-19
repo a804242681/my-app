@@ -6,7 +6,7 @@ module.exports = robot => {
     robot.on('push', async context => {
     // Code was pushed to the repo, what should we do with it?
            const { issue, comment, repository } = context.payload
-    robot.log(repository.owner.login+'xxxxx')
+    robot.log("Owner: "+repository.owner.login+"repository name: "+repository.name+' ')
         
   })
     
