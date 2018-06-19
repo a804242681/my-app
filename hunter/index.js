@@ -6,9 +6,13 @@ module.exports = robot => {
     robot.on('push', async context => {
     // Code was pushed to the repo, what should we do with it?
     robot.log(context+"xxx")
+        
+        
+        
+        
+        
+        
   })
-    
-    
     
     robot.on(['issues.opened', 'issues.edited'], async context => {
     var save =""
