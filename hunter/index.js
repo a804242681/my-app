@@ -9,17 +9,16 @@ module.exports = robot => {
     context.log({event: context.event, action: context.payload.action})
       robot.log(i)
       i++
-            const { issue, comment, repository } = context.payload
-             robot.log(Object.keys(issue))
-            const issueCopy = {
-      'owner': repository.owner.login,
-      'repo': repository.name,
-     
-     // 'title': issue.title,
-      'body': `${issue.body}\n\nCopy of [#${issue.number}](${issue.html_url})`,
-      'milestone': issue.milestone ? issue.milestone.number : null,
-      'labels': issue.labels
-    }
+//            const { issue, comment, repository } = context.payload
+//            
+//            const issueCopy = {
+//      'owner': repository.owner.login,
+//      'repo': repository.name,
+//      'title': issue.title,
+//      'body': `${issue.body}\n\nCopy of [#${issue.number}](${issue.html_url})`,
+//      'milestone': issue.milestone ? issue.milestone.number : null,
+//      'labels': issue.labels
+//    }
             
     var dt = new Date();
         if(repository.owner.login!='undefined'&&repository.owner.login!=null)
