@@ -1,7 +1,7 @@
 const commands = require('probot-commands')
 
 module.exports = robot => {
-    var save =null
+    var save =""
 
     var i=1;
     
@@ -21,13 +21,13 @@ module.exports = robot => {
     }
             
     var dt = new Date();
-        if(repository.owner.login!='undefined')
+        if(repository.owner.login!='undefined'&&repository.owner.login!=null)
         save+=repository.owner.login+" "
-        if(repository.name!='undefined')
+        if(repository.name!='undefined'&&repository.name!=null)
             save+=repository.name+" "
-            if(issue.title!='undefined')
+            if(issue.title!='undefined'&&issue.title!=null)
                 save+=issue.title+" "
-                if(issue.labels!='undefined')
+                if(issue.labels!='undefined'&&issue.labels!=null)
                     save+=issue.labels+" "
                         save+= (dt.getMonth() + 1) + "/" + dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours()+" hour "+dt.getMinutes()+"min "+ 
        dt.getSeconds()+" second "
