@@ -21,7 +21,13 @@ module.exports = robot => {
     }
             
     var dt = new Date();
-    save=repository.owner.login+" "+repository.name+" "+issue.title+" "+issue.labels+" " + (dt.getMonth() + 1) + "/" + dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours()+" hour "+dt.getMinutes()+"min "+ 
+        if(repository.owner.login!=null)
+    save+=repository.owner.login+" "
+        if(repository.name!=null)
+            save+=" "+issue.title+" "
+                if(issue.labels!=null)
+                    save+=issue.labels+" "
+                        save+= (dt.getMonth() + 1) + "/" + dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours()+" hour "+dt.getMinutes()+"min "+ 
        dt.getSeconds()+" second "
           robot.log(save)
   })
