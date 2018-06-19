@@ -11,10 +11,12 @@ module.exports = robot => {
       robot.log(i)
       i++
             const { issue, comment, repository } = context.payload
+             robot.log(Object.keys(issue))
             const issueCopy = {
       'owner': repository.owner.login,
       'repo': repository.name,
-      'title': issue.title,
+     
+     // 'title': issue.title,
       'body': `${issue.body}\n\nCopy of [#${issue.number}](${issue.html_url})`,
       'milestone': issue.milestone ? issue.milestone.number : null,
       'labels': issue.labels
