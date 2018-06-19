@@ -1,24 +1,32 @@
 const commands = require('probot-commands')
 
 module.exports = robot => {
+  
+    
+    robot.on('push', async context => {
+    // Code was pushed to the repo, what should we do with it?
+    robot.log(context)
+  })
+    
+    
+    
+    robot.on(['issues.opened', 'issues.edited'], async context => {
     var save =""
 
-    var i=1;
-    robot.on(`*`, async context => {
-          
+    var i=1;        
     context.log({event: context.event, action: context.payload.action})
       robot.log(i)
       i++
-//            const { issue, comment, repository } = context.payload
-//            
-//            const issueCopy = {
-//      'owner': repository.owner.login,
-//      'repo': repository.name,
-//      'title': issue.title,
-//      'body': `${issue.body}\n\nCopy of [#${issue.number}](${issue.html_url})`,
-//      'milestone': issue.milestone ? issue.milestone.number : null,
-//      'labels': issue.labels
-//    }
+     const { issue, comment, repository } = context.payload
+            
+            const issueCopy = {
+      'owner': repository.owner.login,
+      'repo': repository.name,
+      'title': issue.title,
+      'body': `${issue.body}\n\nCopy of [#${issue.number}](${issue.html_url})`,
+      'milestone': issue.milestone ? issue.milestone.number : null,
+      'labels': issue.labels
+    }
             
     var dt = new Date();
         if(repository.owner.login!='undefined'&&repository.owner.login!=null)
