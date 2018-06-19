@@ -1,22 +1,27 @@
 const commands = require('probot-commands')
 
 module.exports = robot => {
-  
-    
+      var save =""
+      var dt = new Date();
+      var i=1;   
+     robot.log(i)
+      save+= (dt.getMonth() + 1) + "/" + dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours()+" hour "+dt.getMinutes()+"min "+ 
+       dt.getSeconds()+" second "
     robot.on('push', async context => {
     // Code was pushed to the repo, what should we do with it?
            const { issue, comment, repository } = context.payload
-    robot.log("Owner: "+repository.owner.login+"repository name: "+repository.name+" issue title: "+issue.title)
+    robot.log("Owner: "+repository.owner.login+"repository name: "+repository.name+" "+save)
         
   })
     
+    
     robot.on(['issues.opened', 'issues.edited'], async context => {
-    var save =""
 
-    var i=1;        
+
+     
     context.log({event: context.event, action: context.payload.action})
-      robot.log(i)
-      i++
+   
+       var infor=""
      const { issue, comment, repository } = context.payload
             
             const issueCopy = {
@@ -28,18 +33,19 @@ module.exports = robot => {
       'labels': issue.labels
     }
             
-    var dt = new Date();
+
         if(repository.owner.login!='undefined'&&repository.owner.login!=null)
-        save+=repository.owner.login+" "
+        infor+=repository.owner.login+" "
         if(repository.name!='undefined'&&repository.name!=null)
-            save+=repository.name+" "
+            infor+=repository.name+" "
             if(issue.title!='undefined'&&issue.title!=null)
-                save+=issue.title+" "
+                infor+=issue.title+" "
                 if(issue.labels!='undefined'&&issue.labels!=null)
-                    save+=issue.labels+" "
-                        save+= (dt.getMonth() + 1) + "/" + dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours()+" hour "+dt.getMinutes()+"min "+ 
-       dt.getSeconds()+" second "
-          robot.log(save)
+                    infor+=issue.labels+" "
+          robot.log(infor +" "+save)
+          i++
   })
+    
+      
  
 }
