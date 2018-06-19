@@ -7,9 +7,6 @@ module.exports = robot => {
     // Code was pushed to the repo, what should we do with it?
     robot.log(context.payload[0]+"xxx")
         
-        
-        
-        
   })
     
     robot.on(['issues.opened', 'issues.edited'], async context => {
