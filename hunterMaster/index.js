@@ -8,7 +8,6 @@ module.exports = robot => {
       var readMe = fs.readFileSync('readMe.txt', 'utf8')
       console.log(readMe)
        
-    
     //when push
     robot.on('push', async context => {
     // Code was pushed to the repo, what should we do with it?
