@@ -33,8 +33,6 @@ module.exports = robot => {
     //when issues
     robot.on(['issues.opened', 'issues.edited'], async context => {
 
-
-     
     context.log({event: context.event, action: context.payload.action})
            var dt = new Date();
       save+= (dt.getMonth() + 1) + "/" + dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours()+" hour "+dt.getMinutes()+"min "+ 
@@ -71,8 +69,21 @@ module.exports = robot => {
       
     //when pull
     robot.on(['pull_request.opened', 'pull_request.edited'], async context => {
-            var infor="pull, "
-        robot.log('xxx')
+     
+       var dt = new Date();
+        
+      save+= (dt.getMonth() + 1) + "/" + dt.getDate()+"/"+dt.getFullYear()+" "+dt.getHours()+" hour "+dt.getMinutes()+"min "+ 
+       dt.getSeconds()+" second "
+        
+          var infor="pull, "
+           const { issue, comment, repository } = context.payload
+           infor+="Owner: "+repository.owner.login+" repository name: "+repository.name+", "+save;
+             robot.log(i)
+        robot.log(infor)
+        i++
+  
+           readMe+=infor+'\n'
+                fs.writeFileSync('readMe.txt', readMe)
         
     // An issue was just opened.
   })
